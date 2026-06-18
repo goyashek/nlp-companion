@@ -6,8 +6,11 @@
 //   • NLP-specific Decision Wizard + Diagnostic quiz
 
 // ─── Config ───────────────────────────────────────────────────
-const SS_BASE = '../ss/';
+// SS_BASE: screenshots live in /ss/ at the repo root (one level up from app files on local,
+// same repo root on GitHub Pages since the repo IS the app root)
+const SS_BASE = 'ss/';
 const YT_BASE = 'https://www.youtube.com/watch?v=';
+// Local video links only work when running via file:// protocol on your machine
 const LOCAL_VIDEO_BASE = 'file:///Users/abhigoyal/Documents/Acadss/Data%20Science/CampusX/Natural%20Language%20Processing(NLP)/';
 
 // Lecture metadata
