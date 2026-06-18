@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusX NLP Companion — Quick Reference & Cheat Sheet</title>
+  <meta name="description" content="Interactive NLP cheat sheet covering text preprocessing, representation, Word2Vec, POS tagging, HMMs, and Viterbi — based on CampusX NLP course lectures 1-7.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo-icon">
+          <i data-lucide="message-square-code"></i>
+        </div>
+        <div>
+          <h2>NLP Companion</h2>
+          <span>CampusX NLP Course</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <button class="nav-btn active" data-tab="dashboard" id="nav-dashboard">
+          <i data-lucide="layout-grid"></i>
+          <span>Dashboard &amp; Cheat Sheet</span>
+        </button>
+        <button class="nav-btn" data-tab="lectures" id="nav-lectures">
+          <i data-lucide="book-open"></i>
+          <span>Topic-wise Notes</span>
+        </button>
+        <button class="nav-btn" data-tab="wizard" id="nav-wizard">
+          <i data-lucide="git-fork"></i>
+          <span>NLP Decision Wizard</span>
+        </button>
+        <button class="nav-btn" id="theme-toggle-btn" style="margin-top:12px; border-top:1px solid var(--border-color); padding-top:18px; border-radius: 0 12px 12px 0;">
+          <span id="theme-icon-container" style="display:flex;align-items:center;justify-content:center;"><i data-lucide="sun" id="theme-icon"></i></span>
+          <span id="theme-text">Light Mode</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="info-card">
+          <i data-lucide="info"></i>
+          <p>Click any concept card to see code, intuition, and lecture screenshots.</p>
+        </div>
+        <div class="lecture-progress">
+          <div class="progress-label">
+            <i data-lucide="play-circle"></i>
+            <span>Lectures Covered</span>
+          </div>
+          <div class="lecture-dots" id="lecture-dots">
+            <!-- populated by JS -->
+          </div>
+        </div>
+        <div class="credits">
+          <a href="https://github.com/goyashek" target="_blank" class="credits-link">
+            <i data-lucide="heart"></i>
+            <span>Made by Abhishek Goyal</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- TAB: Dashboard / Cheat Sheet -->
+      <section id="dashboard-tab" class="tab-content active">
+        <header class="tab-header">
+          <div>
+            <h1>NLP Concept Directory</h1>
+            <p class="subtitle">Based on CampusX NLP Course — Lectures 1–7. Search, filter by category or lecture, and quick-review any concept with code &amp; screenshots.</p>
+          </div>
+        </header>
+
+        <div class="search-filter-section">
+          <div class="search-bar">
+            <i data-lucide="search" class="search-icon"></i>
+            <input type="text" id="search-input" placeholder="Search concepts, keywords (e.g. 'TF-IDF', 'stemming', 'Viterbi', 'Word2Vec')...">
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Category:</span>
+            <div class="filter-tags" id="category-filters">
+              <button class="filter-tag active" data-category="all">All</button>
+              <button class="filter-tag" data-category="foundations">Foundations</button>
+              <button class="filter-tag" data-category="preprocessing">Preprocessing</button>
+              <button class="filter-tag" data-category="representation">Representation</button>
+              <button class="filter-tag" data-category="embeddings">Embeddings</button>
+              <button class="filter-tag" data-category="classification">Classification</button>
+              <button class="filter-tag" data-category="sequence">Sequence Modeling</button>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Lecture:</span>
+            <div class="filter-tags" id="lecture-filters">
+              <button class="filter-tag lecture-tag active" data-lecture="all">All</button>
+              <button class="filter-tag lecture-tag" data-lecture="1">L1 – Intro</button>
+              <button class="filter-tag lecture-tag" data-lecture="2">L2 – Pipeline</button>
+              <button class="filter-tag lecture-tag" data-lecture="3">L3 – Preprocessing</button>
+              <button class="filter-tag lecture-tag" data-lecture="4">L4 – Representation</button>
+              <button class="filter-tag lecture-tag" data-lecture="5">L5 – Word2Vec</button>
+              <button class="filter-tag lecture-tag" data-lecture="6">L6 – Classification</button>
+              <button class="filter-tag lecture-tag" data-lecture="7">L7 – POS &amp; HMM</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="techniques-grid" id="techniques-grid">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- TAB: Topic-wise Lecture Notes -->
+      <section id="lectures-tab" class="tab-content">
+        <header class="tab-header">
+          <div>
+            <h1>Topic-wise Lecture Notes</h1>
+            <p class="subtitle">Structured notes organized by lecture. Each lecture shows its topics with screenshots, key insights, and concept summaries.</p>
+          </div>
+        </header>
+
+        <div class="lecture-nav-strip" id="lecture-nav-strip">
+          <!-- Lecture navigation tabs — populated by JS -->
+        </div>
+
+        <div id="lecture-notes-content">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- TAB: Decision Wizard -->
+      <section id="wizard-tab" class="tab-content">
+        <header class="tab-header">
+          <div>
+            <h1>NLP Decision Wizard</h1>
+            <p class="subtitle">Not sure which technique to use? Answer a few questions about your NLP task to get a recommendation with common traps to avoid.</p>
+          </div>
+        </header>
+
+        <div class="wizard-container">
+          <div class="wizard-card">
+            <div class="wizard-progress">
+              <div class="progress-bar-fill" id="wizard-progress-fill" style="width: 25%;"></div>
+            </div>
+            <div class="wizard-body">
+              <div class="wizard-tip" id="wizard-tip" style="display:none;">
+                <i data-lucide="lightbulb" class="tip-icon"></i>
+                <span id="wizard-tip-text"></span>
+              </div>
+              <div class="question-container" id="question-box">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+            <div class="wizard-footer">
+              <button class="btn btn-secondary" id="wizard-back-btn" style="visibility:hidden;">
+                <i data-lucide="arrow-left"></i> Back
+              </button>
+              <button class="btn btn-primary" id="wizard-restart-btn">
+                <i data-lucide="rotate-ccw"></i> Restart
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Detail Drawer -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <div class="detail-drawer" id="detail-drawer">
+      <button class="drawer-close" id="drawer-close-btn">
+        <i data-lucide="x"></i>
+      </button>
+      <div class="drawer-content" id="drawer-content">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="nlp_data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
