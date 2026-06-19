@@ -1,7 +1,9 @@
 <div align="center">
 
-# 🧠 NLP Companion
-### An Interactive Cheat Sheet & Study Dashboard
+# 🧠 An Interactive Cheat Sheet & Study Dashboard
+
+### CampusX NLP Playlist Companion & Decision Guide
+
 
 **Based on the [CampusX NLP Course](https://www.youtube.com/playlist?list=PLKnIA16_RmvZo7fp5kkIth6nRTeQQsjfX) — Lectures 1 to 7**
 
