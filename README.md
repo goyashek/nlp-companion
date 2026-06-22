@@ -5,7 +5,7 @@
 ### CampusX NLP Playlist Companion & Decision Guide
 
 
-**Based on the [CampusX NLP Course](https://www.youtube.com/playlist?list=PLKnIA16_RmvZo7fp5kkIth6nRTeQQsjfX) — Lectures 1 to 7**
+**Based on the [CampusX NLP Course](https://www.youtube.com/playlist?list=PLKnIA16_RmvZo7fp5kkIth6nRTeQQsjfX) 
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-6366f1?style=for-the-badge&logo=github)](https://goyashek.github.io/nlp-companion/)
 [![Made with](https://img.shields.io/badge/Made%20with-Vanilla%20JS-f7df1e?style=for-the-badge&logo=javascript&logoColor=black)](https://goyashek.github.io/nlp-companion/)
